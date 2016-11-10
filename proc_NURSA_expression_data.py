@@ -26,14 +26,17 @@ def main():
       all_id.append(inst_line[0])
       all_exp.append(inst_line[1])
 
-  all_id = list(set(all_id))
+  all_id = sorted(list(set(all_id)))
   print(all_id)
 
-  # print('\n\n')
-  # print(len(all_exp))
-  # all_exp = sorted(list(set(all_exp)))
-  # print(len(all_exp))
-  # print(all_exp)
+  print('\n\n')
+  print(len(all_exp))
+  all_exp = sorted(list(set(all_exp)))
+  print(len(all_exp))
+
+  print('-- experiments')
+  for inst_exp in all_exp:
+    print(inst_exp)
 
   # all_id = list(set(all_id))
   # print(len(all_id))
