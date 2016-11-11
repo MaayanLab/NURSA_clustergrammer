@@ -330,10 +330,17 @@ function Enrichr_request(inst_cgm){
 
     _.each(enr_terms, function(inst_term){
 
-
       inst_data = {};
       // custom change for mouse phenotypes, remove MP ID
-      inst_data['cat_title'] = inst_term[1];
+      var inst_name = inst_term[1];
+      inst_name = inst_name.split('_').splice(1,inst_name.length).join('_');
+
+      // quick fix for missing name
+      if (inst_name === 'abnormal_response_to_'){
+        inst_name = 'abnormal_response_to_infection'
+      }
+
+      inst_data['cat_title'] = inst_name;
       // inst_data['cat_title'] = inst_term[1].split('_')[1].join('_');;
       inst_data['cats'] = [];
       inst_data['pval'] = inst_term[2];

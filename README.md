@@ -1,3 +1,6 @@
+# Notes
+ATRA induces differentiation. TGM2 knockdown affects immunity.
+
 # Dataset Name:
 Time course transcriptomic analysis of all-trans retinoic acid (ATRA)-treated NB4 cells.
 

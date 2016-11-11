@@ -17,7 +17,7 @@ function make_clust(inst_network){
         'col_tip_callback':test_col_callback,
         'tile_tip_callback':test_tile_callback,
         'sidebar_width':150,
-        'col_label_scale':2.1
+        'col_label_scale':2.2
       };
 
       resize_container(args);

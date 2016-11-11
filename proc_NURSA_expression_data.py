@@ -77,7 +77,7 @@ def main():
   new_names = []
   for inst_name in old_names:
 
-    inst_name = inst_name.replace('(','').replace(') |','').replace('1 microM, ','').replace(' h', 'hr')
+    inst_name = inst_name.replace('(','').replace(') |','').replace('1 microM, ','').replace(' h', 'hr').replace('WT A','WT, A')
     new_names.append(inst_name)
 
   df.columns = new_names
