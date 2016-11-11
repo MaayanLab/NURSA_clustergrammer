@@ -51,6 +51,29 @@ def main():
   # save matrix
   ###################
   df = pd.DataFrame(data=mat, columns=all_exp, index=all_gene)
+
+  # only keep TGM2 KD experiments
+  print(all_exp)
+
+  keep_col = []
+  for inst_exp in all_exp:
+    if 'TGM2 KD vs' in inst_exp:
+      inst_exp = inst_exp.replace('(','').replace(') |','').replace('1 microM, ','')
+      keep_col.append(inst_exp)
+
+  df = df[keep_col]
+
+  # remove genes with no names
+  keep_row = []
+  for inst_gene in all_gene:
+    if inst_gene != '':
+      keep_row.append(inst_gene)
+
+  # filter out rows (using transposes)
+  df = df.transpose()
+  df = df[keep_row]
+  df = df.transpose()
+
   df.to_csv('data/td_cardio_matrix.txt', sep='\t')
 
 main()
