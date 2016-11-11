@@ -24,7 +24,6 @@ def main():
     inst_line = lines[i].strip().split('\t')
 
     if i > 0:
-
       all_exp.append(inst_line[1])
       all_gene.append(inst_line[2])
 
@@ -58,7 +57,6 @@ def main():
   keep_col = []
   for inst_exp in all_exp:
     if 'TGM2 KD vs' in inst_exp:
-      inst_exp = inst_exp.replace('(','').replace(') |','').replace('1 microM, ','')
       keep_col.append(inst_exp)
 
   df = df[keep_col]
@@ -73,6 +71,16 @@ def main():
   df = df.transpose()
   df = df[keep_row]
   df = df.transpose()
+
+  # clean experiment names
+  old_names = df.columns.tolist()
+  new_names = []
+  for inst_name in old_names:
+
+    inst_name = inst_name.replace('(','').replace(') |','').replace('1 microM, ','').replace(' h', 'hr')
+    new_names.append(inst_name)
+
+  df.columns = new_names
 
   df.to_csv('data/td_cardio_matrix.txt', sep='\t')
 
