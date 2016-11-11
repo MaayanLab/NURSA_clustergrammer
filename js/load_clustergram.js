@@ -12,7 +12,7 @@ function make_clust(inst_network){
       var args = {
         root: '#container-id-1',
         'network_data': network_data,
-        'about':'Zoom, scroll, and click buttons to interact with the clustergram.',
+        // 'about':'Zoom, scroll, and click buttons to interact with the clustergram.',
         'row_tip_callback':gene_info,
         'col_tip_callback':test_col_callback,
         'tile_tip_callback':test_tile_callback,

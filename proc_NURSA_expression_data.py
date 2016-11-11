@@ -72,13 +72,32 @@ def main():
   df = df[keep_row]
   df = df.transpose()
 
+  # add gene title
+  old_rows = df.index.tolist()
+  new_rows = []
+  for inst_row in old_rows:
+      inst_row = 'gene: ' + inst_row
+      new_rows.append(inst_row)
+
+  df.index = new_rows
+
   # clean experiment names
   old_names = df.columns.tolist()
   new_names = []
   for inst_name in old_names:
 
     inst_name = inst_name.replace('(','').replace(') |','').replace('1 microM, ','').replace(' h', 'hr').replace('WT A','WT, A')
-    new_names.append(inst_name)
+
+    inst_name = 'treatment: ' + inst_name
+
+    inst_treatment = 'ATRA exposure: '+ str(0)
+    if '48' in inst_name:
+      inst_treatment = 'ATRA exposure: '+ str(48)
+    if '72' in inst_name:
+      inst_treatment = 'ATRA exposure: '+ str(72)
+
+    inst_tuple = (inst_name, inst_treatment)
+    new_names.append(inst_tuple)
 
   df.columns = new_names
 

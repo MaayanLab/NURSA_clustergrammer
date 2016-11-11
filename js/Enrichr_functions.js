@@ -335,7 +335,7 @@ function Enrichr_request(inst_cgm){
       var inst_name = inst_term[1];
       inst_name = inst_name.split('_').splice(1,inst_name.length).join('_');
 
-      // quick fix for missing name
+      // quick hack for missing mouse phenotype name
       if (inst_name === 'abnormal_response_to_'){
         inst_name = 'abnormal_response_to_infection'
       }
